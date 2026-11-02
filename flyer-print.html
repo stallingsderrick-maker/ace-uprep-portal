@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ACE Program Flyer — University Preparatory Academy</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 8in;
+    height: 12in;
+    font-family: 'Open Sans', Arial, sans-serif;
+    background: #fff;
+  }
+
+  /* Print settings */
+  @page {
+    size: 8in 12in;
+    margin: 0;
+  }
+  @media print {
+    html, body { width: 8in; height: 12in; }
+    .flyer { box-shadow: none; }
+  }
+
+  .flyer {
+    width: 8in;
+    height: 12in;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: #ffffff;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: linear-gradient(150deg, #0d1f42 0%, #1a3468 55%, #112a52 100%);
+    padding: 0.42in 0.45in 0.32in;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -70px; right: -70px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -90px; left: 45%;
+    width: 360px; height: 360px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    pointer-events: none;
+  }
+
+  .school-tag {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9.5pt;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #7fb3e8;
+    margin-bottom: 0.16in;
+  }
+
+  .ace-lockup {
+    display: flex;
+    align-items: center;
+    gap: 0.2in;
+    margin-bottom: 0.14in;
+  }
+  .ace-letters {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 84pt;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1;
+    letter-spacing: -4px;
+  }
+  .ace-rule {
+    width: 3px;
+    height: 88px;
+    background: #4a90d9;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .ace-subtitle {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .ace-subtitle .line1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18pt;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.2;
+  }
+  .ace-subtitle .line2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14pt;
+    font-weight: 600;
+    color: #a8ccee;
+    line-height: 1.2;
+  }
+  .ace-subtitle .line3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #6a9fd8;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .header-tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14pt;
+    font-weight: 600;
+    color: #a8ccee;
+    line-height: 1.5;
+  }
+  .header-tagline strong { color: #ffffff; font-weight: 800; }
+
+  /* ── GOLD BAND ── */
+  .gold-band {
+    background: linear-gradient(90deg, #b8943a 0%, #d4ac50 30%, #e8c96a 50%, #d4ac50 70%, #b8943a 100%);
+    padding: 0.12in 0.45in;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .gold-pill {
+    background: rgba(0,0,0,0.18);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9pt;
+    font-weight: 700;
+    color: #2a1a00;
+    white-space: nowrap;
+  }
+  .gold-center {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11pt;
+    font-weight: 800;
+    color: #1a0d00;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+
+  /* ── BODY ── */
+  .body {
+    flex: 1;
+    padding: 0.28in 0.45in 0.22in;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2in;
+    overflow: hidden;
+  }
+
+  /* Intro */
+  .intro {
+    font-size: 11pt;
+    line-height: 1.65;
+    color: #222;
+    border-left: 4px solid #1a3468;
+    padding-left: 0.18in;
+  }
+  .intro strong { color: #1a3468; }
+
+  /* Cert cards */
+  .cert-row {
+    display: flex;
+    gap: 0.16in;
+  }
+  .cert-card {
+    flex: 1;
+    border-radius: 7px;
+    padding: 0.16in 0.14in;
+    text-align: center;
+    border: 2px solid transparent;
+  }
+  .cert-card.ca { background: #eaf1fb; border-color: #3a7bd5; }
+  .cert-card.cs { background: #fef6e4; border-color: #d4960e; }
+  .cert-card.ga { background: #eaf7ef; border-color: #2e9b5a; }
+  .cert-icon { font-size: 24pt; margin-bottom: 6px; }
+  .cert-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10.5pt;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+  .cert-desc { font-size: 8.5pt; color: #445; line-height: 1.4; }
+  .cert-badge {
+    display: inline-block;
+    margin-top: 7px;
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 7.5pt;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: white;
+  }
+  .cert-card.ca .cert-badge { background: #3a7bd5; }
+  .cert-card.cs .cert-badge { background: #d4960e; }
+  .cert-card.ga .cert-badge { background: #2e9b5a; }
+
+  /* Two col */
+  .two-col { display: flex; gap: 0.18in; }
+
+  .info-box {
+    flex: 1.05;
+    background: #f5f7fb;
+    border-radius: 7px;
+    padding: 0.18in 0.16in;
+    border-top: 4px solid #1a3468;
+  }
+  .info-box h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8.5pt;
+    font-weight: 800;
+    color: #1a3468;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 0.1in;
+  }
+  .info-box ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .info-box ul li {
+    font-size: 9.5pt;
+    color: #222;
+    line-height: 1.4;
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+  }
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #1a3468;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .clinic-box {
+    flex: 0.95;
+    background: linear-gradient(140deg, #0d1f42, #1a3468);
+    border-radius: 7px;
+    padding: 0.18in 0.16in;
+  }
+  .clinic-box h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8pt;
+    font-weight: 800;
+    color: #7fb3e8;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .clinic-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12pt;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 7px;
+    line-height: 1.3;
+  }
+  .clinic-box p {
+    font-size: 9pt;
+    color: #a8ccee;
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+  .service-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .service-tags span {
+    background: rgba(255,255,255,0.13);
+    border-radius: 10px;
+    padding: 3px 9px;
+    font-size: 8pt;
+    color: #d0e8ff;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  /* Stats bar */
+  .stats-bar {
+    background: #1a3468;
+    border-radius: 7px;
+    display: flex;
+    overflow: hidden;
+  }
+  .stat {
+    flex: 1;
+    padding: 0.15in 0.1in;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .stat:last-child { border-right: none; }
+  .stat .num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22pt;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat .num sup { font-size: 13pt; }
+  .stat .lbl {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 7.5pt;
+    color: #7fb3e8;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: 0.3px;
+  }
+
+  /* CTA */
+  .cta {
+    background: linear-gradient(135deg, #1a6e36, #229448);
+    border-radius: 7px;
+    padding: 0.2in 0.22in;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.2in;
+  }
+  .cta-left h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14pt;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 5px;
+  }
+  .cta-left p {
+    font-size: 9.5pt;
+    color: #b8f0cc;
+    line-height: 1.55;
+  }
+  .cta-badge {
+    background: #fff;
+    border-radius: 7px;
+    padding: 0.12in 0.18in;
+    text-align: center;
+    flex-shrink: 0;
+    min-width: 1.3in;
+  }
+  .cta-badge .free-word {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 26pt;
+    font-weight: 900;
+    color: #1a6e36;
+    line-height: 1;
+  }
+  .cta-badge .free-sub {
+    font-size: 7.5pt;
+    color: #2c6e3f;
+    font-weight: 700;
+    margin-top: 3px;
+    line-height: 1.4;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: #f0f3f8;
+    border-top: 2px solid #d0daea;
+    padding: 0.14in 0.45in;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.2in;
+    flex-shrink: 0;
+  }
+  .footer-school {
+    font-size: 9pt;
+    color: #445;
+    line-height: 1.6;
+  }
+  .footer-school strong {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10pt;
+    color: #1a3468;
+    display: block;
+    margin-bottom: 1px;
+  }
+  .spots-pill {
+    background: #c8a84b;
+    color: #1a0d00;
+    border-radius: 16px;
+    padding: 6px 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9pt;
+    font-weight: 800;
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+  }
+  .footer-apply { text-align: right; }
+  .footer-apply .apply-lbl {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8pt;
+    font-weight: 700;
+    color: #7fb3e8;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .footer-apply .apply-txt {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10pt;
+    font-weight: 700;
+    color: #1a3468;
+    line-height: 1.4;
+  }
+</style>
+</head>
+<body>
+<div class="flyer">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="school-tag">University Preparatory Academy &nbsp;·&nbsp; Detroit, Michigan</div>
+    <div class="ace-lockup">
+      <div class="ace-letters">ACE</div>
+      <div class="ace-rule"></div>
+      <div class="ace-subtitle">
+        <span class="line1">Advanced Career</span>
+        <span class="line2">&amp; Engineering Program</span>
+        <span class="line3">Career &amp; Technical Education</span>
+      </div>
+    </div>
+    <div class="header-tagline">
+      Earn <strong>industry certifications.</strong>&nbsp; Run a <strong>real tech clinic.</strong>&nbsp; Get <strong>hired.</strong>
+    </div>
+  </div>
+
+  <!-- GOLD BAND -->
+  <div class="gold-band">
+    <span class="gold-pill">🗓 Launching January 2027</span>
+    <span class="gold-center">Monday – Thursday &nbsp;·&nbsp; 3:00 PM – 5:00 PM &nbsp;·&nbsp; After School Program</span>
+    <span class="gold-pill">📍 UPrep Detroit</span>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- INTRO -->
+    <p class="intro">
+      The ACE Program is a <strong>after-school technical academy</strong> where UPrep students earn
+      real IT certifications recognized by employers across Detroit — and run a live community
+      computer repair clinic right on campus. <strong>No experience required. Zero cost to students.</strong>
+    </p>
+
+    <!-- CERT CARDS -->
+    <div class="cert-row">
+      <div class="cert-card ca">
+        <div class="cert-icon">🖥️</div>
+        <div class="cert-name">CompTIA A+</div>
+        <div class="cert-desc">Hardware, networking, operating systems &amp; troubleshooting</div>
+        <span class="cert-badge">INDUSTRY STANDARD</span>
+      </div>
+      <div class="cert-card cs">
+        <div class="cert-icon">🔒</div>
+        <div class="cert-name">CompTIA Security+</div>
+        <div class="cert-desc">Cybersecurity fundamentals, threats &amp; incident response</div>
+        <span class="cert-badge">DOD APPROVED</span>
+      </div>
+      <div class="cert-card ga">
+        <div class="cert-icon">🤖</div>
+        <div class="cert-name">Google AI Professional</div>
+        <div class="cert-desc">AI tools, prompt engineering &amp; real-world automation</div>
+        <span class="cert-badge">GOOGLE CERTIFIED</span>
+      </div>
+    </div>
+
+    <!-- TWO COL -->
+    <div class="two-col">
+      <div class="info-box">
+        <h3>📋 Program Details</h3>
+        <ul>
+          <li><span class="dot"></span>Open to UPrep high school students — 11th and 12th grade welcome</li>
+          <li><span class="dot"></span>30 seats only — limited enrollment, application required</li>
+          <li><span class="dot"></span>Mon–Thurs, 3:00–5:00 PM throughout the school year</li>
+          <li><span class="dot"></span>Two summer exam boot camps (June &amp; August)</li>
+          <li><span class="dot"></span>No prior tech experience needed — we start from zero</li>
+          <li><span class="dot"></span>Students selected by logic &amp; grit — not GPA</li>
+          <li><span class="dot"></span>100% grant-funded — completely free for every student selected</li>
+        </ul>
+      </div>
+      <div class="clinic-box">
+        <h3>🏥 Community Service</h3>
+        <div class="clinic-title">The UPrep Community<br>Tech Clinic</div>
+        <p>ACE students run a real, public-facing computer repair clinic on campus — fixing devices for Detroit families and small businesses while building their résumé.</p>
+        <div class="service-tags">
+          <span>Virus Removal</span>
+          <span>Screen Repair</span>
+          <span>RAM &amp; Storage</span>
+          <span>OS Reinstall</span>
+          <span>AI Consultations</span>
+          <span>Laptop Battery</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-bar">
+      <div class="stat">
+        <div class="num">3<sup>+</sup></div>
+        <div class="lbl">Industry<br>Certifications</div>
+      </div>
+      <div class="stat">
+        <div class="num">$45<sup>K</sup></div>
+        <div class="lbl">Detroit Entry-Level<br>IT Starting Salary</div>
+      </div>
+      <div class="stat">
+        <div class="num">80<sup>%</sup></div>
+        <div class="lbl">Target Certification<br>Pass Rate</div>
+      </div>
+      <div class="stat">
+        <div class="num">30<sup>+</sup></div>
+        <div class="lbl">Clinic Work Orders<br>Per Student</div>
+      </div>
+      <div class="stat">
+        <div class="num">$0</div>
+        <div class="lbl">Cost to<br>Students</div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta">
+      <div class="cta-left">
+        <h3>Ready to build your tech career?</h3>
+        <p>Applications open for the January 2027 cohort. Seats fill fast —<br>
+        Apply online at: <a href="https://stallingsderrick-maker.github.io/ace-uprep-portal/" style="color:#c8a84b;font-weight:700;">https://stallingsderrick-maker.github.io/ace-uprep-portal/</a></p>
+      </div>
+      <div class="cta-badge">
+        <div class="free-word">FREE</div>
+        <div class="free-sub">No cost to students<br>Grant-funded program</div>
+      </div>
+    </div>
+
+  </div><!-- /body -->
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-school">
+      <strong>University Preparatory Academy</strong>
+      Detroit, Michigan &nbsp;·&nbsp; uprepschools.com<br>
+      Authorized by Grand Valley State University
+    </div>
+    <span class="spots-pill">⚡ Only 30 Spots Available</span>
+    <div class="footer-apply">
+      <div class="apply-lbl">How to Apply</div>
+      <div class="apply-txt">Apply online:<br><a href="https://stallingsderrick-maker.github.io/ace-uprep-portal/" style="color:#c8a84b;font-weight:700;font-size:13px;">https://stallingsderrick-maker.github.io/ace-uprep-portal/</a></div>
+    </div>
+  </div>
+
+</div><!-- /flyer -->
+</body>
+</html>
