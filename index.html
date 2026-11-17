@@ -547,10 +547,22 @@ let currentFilter = 'all';
 
 // ── Navigation ─────────────────────────────────────────────────────────────
 function showPage(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo(0,0);
-  if(id === 'admin') renderAdmin();
+  try {
+    console.log('showPage called with:', id);
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const page = document.getElementById(id);
+    if(!page) {
+      console.error('Page not found:', id);
+      alert('Error: Page "' + id + '" not found');
+      return;
+    }
+    page.classList.add('active');
+    window.scrollTo(0,0);
+    if(id === 'admin') renderAdmin();
+  } catch(e) {
+    console.error('showPage error:', e);
+    alert('Error showing page: ' + e.message);
+  }
 }
 
 // ── Radio opts ─────────────────────────────────────────────────────────────
